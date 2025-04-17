@@ -211,11 +211,12 @@ public:
 
     void finalize(const String & reason)  override { finalize(false, false, reason); }
 
-    void setZooKeeperLog(std::shared_ptr<DB::ZooKeeperLog> zk_log_);
+    void setZooKeeperLog(std::shared_ptr<ZooKeeperLog> zk_log_);
 
     void setServerCompletelyStarted();
 
     const KeeperFeatureFlags * getKeeperFeatureFlags() const override { return &keeper_feature_flags; }
+    KeeperApiVersion getKeeperApiVersion() const override { return keeper_api_version; }
 
 private:
     ACLs default_acls;
@@ -349,7 +350,8 @@ private:
     CurrentMetrics::Increment active_session_metric_increment{CurrentMetrics::ZooKeeperSession};
     std::shared_ptr<ZooKeeperLog> zk_log;
 
-    DB::KeeperFeatureFlags keeper_feature_flags;
+    KeeperFeatureFlags keeper_feature_flags;
+    KeeperApiVersion keeper_api_version;
 };
 
 }

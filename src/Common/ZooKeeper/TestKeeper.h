@@ -116,6 +116,11 @@ public:
         return false;
     }
 
+    KeeperApiVersion getKeeperApiVersion() const override
+    {
+        return KeeperApiVersion::ZOOKEEPER_COMPATIBLE;
+    }
+
     struct Node
     {
         String data;
