@@ -122,6 +122,7 @@ class LatencyLog;
 class AsynchronousMetricLog;
 class OpenTelemetrySpanLog;
 class ZooKeeperLog;
+class ZooKeeperConnectionLog;
 class SessionLog;
 class BackupsWorker;
 class TransactionsInfoLog;
@@ -1303,6 +1304,7 @@ public:
     std::shared_ptr<BackupLog> getBackupLog() const;
     std::shared_ptr<BlobStorageLog> getBlobStorageLog() const;
     std::shared_ptr<QueryMetricLog> getQueryMetricLog() const;
+    std::shared_ptr<ZooKeeperConnectionLog> getZooKeeperConnectionLog() const;
 
     SystemLogs getSystemLogs() const;
 
