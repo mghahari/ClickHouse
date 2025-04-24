@@ -133,7 +133,7 @@ void ZooKeeperConnectionLog::addWithEventType(
         element.port = static_cast<UInt16>(Poco::NumberParser::parseUnsigned(host_port.substr(offset + 1)));
     }
     element.index = zookeeper.getConnectedHostIdx();
-    element.keeper_api_version = static_cast<std::underlying_type_t<KeeperApiVersion>>(zookeeper.getKeeperApiVersion());
+    element.keeper_api_version = 0;
     element.client_id = zookeeper.getClientID();
     element.enabled_feature_flags = getEnabledFeatureFlags(zookeeper);
     element.availability_zone = zookeeper.getConnectedHostAvailabilityZone();

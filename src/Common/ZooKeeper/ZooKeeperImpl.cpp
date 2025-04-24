@@ -1356,7 +1356,7 @@ void ZooKeeper::initFeatureFlags()
 
     auto keeper_api_version_string = tryGetSystemZnode(keeper_api_version_path, "API version");
 
-    keeper_api_version = DB::KeeperApiVersion::ZOOKEEPER_COMPATIBLE;
+    DB::KeeperApiVersion keeper_api_version{DB::KeeperApiVersion::ZOOKEEPER_COMPATIBLE};
 
     if (!keeper_api_version_string.has_value())
     {

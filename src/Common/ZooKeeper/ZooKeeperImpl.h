@@ -216,7 +216,6 @@ public:
     void setServerCompletelyStarted();
 
     const KeeperFeatureFlags * getKeeperFeatureFlags() const override { return &keeper_feature_flags; }
-    KeeperApiVersion getKeeperApiVersion() const override { return keeper_api_version; }
 
 private:
     ACLs default_acls;
@@ -351,7 +350,6 @@ private:
     std::shared_ptr<ZooKeeperLog> zk_log;
 
     KeeperFeatureFlags keeper_feature_flags;
-    KeeperApiVersion keeper_api_version;
 };
 
 }

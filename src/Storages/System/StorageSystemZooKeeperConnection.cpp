@@ -70,7 +70,7 @@ void StorageSystemZooKeeperConnection::fillData(MutableColumns & res_columns, Co
             columns[4]->insert(connected_time);
             columns[5]->insert(uptime);
             columns[6]->insert(zookeeper->expired());
-            columns[7]->insert(static_cast<std::underlying_type_t<KeeperApiVersion>>(zookeeper->getKeeperApiVersion()));
+            columns[7]->insert(0);
             columns[8]->insert(zookeeper->getClientID());
             columns[9]->insert(zookeeper->getConnectionXid());
             columns[10]->insert(ZooKeeperConnectionLog::getEnabledFeatureFlags(*zookeeper));

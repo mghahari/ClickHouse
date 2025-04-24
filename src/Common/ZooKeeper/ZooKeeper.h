@@ -604,7 +604,6 @@ public:
     String getConnectedHostAvailabilityZone() const;
 
     const DB::KeeperFeatureFlags * getKeeperFeatureFlags() const { return impl->getKeeperFeatureFlags(); }
-    DB::KeeperApiVersion getKeeperApiVersion() const { return impl->getKeeperApiVersion(); }
 
     /// Checks that our session was not killed, and allows to avoid applying a request from an old lost session.
     /// Imagine a "connection-loss-on-commit" situation like this:
