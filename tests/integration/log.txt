@@ -1,0 +1,31 @@
+2025-04-24 20:07:26,177 [ 1799691 ] INFO : ClickHouse root is not set. Will use /home/ubuntu/Repos/ClickHouse (runner:53, check_args_and_update_paths)
+2025-04-24 20:07:26,177 [ 1799691 ] INFO : Base configs dir is not set. Will use /home/ubuntu/Repos/ClickHouse/programs/server (runner:68, check_args_and_update_paths)
+2025-04-24 20:07:26,177 [ 1799691 ] INFO : Cases dir is not set. Will use /home/ubuntu/Repos/ClickHouse/tests/integration (runner:79, check_args_and_update_paths)
+2025-04-24 20:07:26,177 [ 1799691 ] INFO : utils dir is not set. Will use /home/ubuntu/Repos/ClickHouse/utils (runner:90, check_args_and_update_paths)
+2025-04-24 20:07:26,178 [ 1799691 ] INFO : base_configs_dir: /home/ubuntu/Repos/ClickHouse/programs/server, binary: /home/ubuntu/Repos/ClickHouse/build/programs/clickhouse, cases_dir: /home/ubuntu/Repos/ClickHouse/tests/integration  (runner:92, check_args_and_update_paths)
+clickhouse_integration_tests_volume
+Start tests
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /ClickHouse/tests/integration
+configfile: ount
+plugins: order-1.0.0, xdist-3.5.0, reportlog-0.4.0, timeout-2.3.1, random-0.2, repeat-0.9.3
+collecting ... collected 0 items
+
+=============================== warnings summary ===============================
+../../../usr/local/lib/python3.10/dist-packages/cassandra/io/asyncorereactor.py:35
+  /usr/local/lib/python3.10/dist-packages/cassandra/io/asyncorereactor.py:35: DeprecationWarning: The asyncore module is deprecated and will be removed in Python 3.12. The recommended replacement is asyncio
+    import asyncore
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================== 1 warning in 0.01s ==============================
+ERROR: file or directory not found: 10
+
+Running pytest container as: 'docker run --net=host  --rm --name clickhouse_integration_tests_hlkhx5 --privileged --dns-search='.' --memory=71477932032 --security-opt seccomp=unconfined --cap-add=SYS_PTRACE --volume=/home/ubuntu/Repos/ClickHouse/build/programs/clickhouse:/clickhouse --volume=/home/ubuntu/Repos/ClickHouse/programs/server:/clickhouse-config --volume=/home/ubuntu/Repos/ClickHouse/tests/integration:/ClickHouse/tests/integration --volume=/home/ubuntu/Repos/ClickHouse/utils/backupview:/ClickHouse/utils/backupview --volume=/home/ubuntu/Repos/ClickHouse/utils/grpc-client/pb2:/ClickHouse/utils/grpc-client/pb2 --volume=/run:/run/host:ro --volume=clickhouse_integration_tests_volume:/var/lib/docker   -e DOCKER_CLIENT_TIMEOUT=300 -e COMPOSE_HTTP_TIMEOUT=600   -e PYTHONUNBUFFERED=1 -e PYTEST_ADDOPTS="  test_zookeeper_connection_log -count 10   -vvv " clickhouse/integration-tests-runner:latest '.
+Traceback (most recent call last):
+  File "/home/ubuntu/Repos/ClickHouse/tests/integration/./runner", line 504, in <module>
+    subprocess.check_call(cmd, shell=True, bufsize=0)
+  File "/usr/lib/python3.10/subprocess.py", line 369, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command 'docker run --net=host  --rm --name clickhouse_integration_tests_hlkhx5 --privileged --dns-search='.' --memory=71477932032 --security-opt seccomp=unconfined --cap-add=SYS_PTRACE --volume=/home/ubuntu/Repos/ClickHouse/build/programs/clickhouse:/clickhouse --volume=/home/ubuntu/Repos/ClickHouse/programs/server:/clickhouse-config --volume=/home/ubuntu/Repos/ClickHouse/tests/integration:/ClickHouse/tests/integration --volume=/home/ubuntu/Repos/ClickHouse/utils/backupview:/ClickHouse/utils/backupview --volume=/home/ubuntu/Repos/ClickHouse/utils/grpc-client/pb2:/ClickHouse/utils/grpc-client/pb2 --volume=/run:/run/host:ro --volume=clickhouse_integration_tests_volume:/var/lib/docker   -e DOCKER_CLIENT_TIMEOUT=300 -e COMPOSE_HTTP_TIMEOUT=600   -e PYTHONUNBUFFERED=1 -e PYTEST_ADDOPTS="  test_zookeeper_connection_log -count 10   -vvv " clickhouse/integration-tests-runner:latest ' returned non-zero exit status 4.
