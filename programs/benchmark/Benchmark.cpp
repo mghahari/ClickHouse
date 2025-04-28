@@ -662,7 +662,7 @@ int mainEntryClickHouseBenchmark(int argc, char ** argv)
 
         clearPasswordFromCommandLine(argc, argv);
 
-        if (options.count("help"))
+        if (options.contains("help"))
         {
             std::cout << "Usage: " << argv[0] << " [options] < queries.txt\n";
             std::cout << desc << "\n";
@@ -670,22 +670,22 @@ int mainEntryClickHouseBenchmark(int argc, char ** argv)
             return 0;
         }
 
-        print_stacktrace = options.count("stacktrace");
+        print_stacktrace = options.contains("stacktrace");
 
         /// NOTE Maybe clickhouse-benchmark should also respect .xml configuration of clickhouse-client.
 
-        UInt16 default_port = options.count("secure") ? DBMS_DEFAULT_SECURE_PORT : DBMS_DEFAULT_PORT;
+        UInt16 default_port = options.contains("secure") ? DBMS_DEFAULT_SECURE_PORT : DBMS_DEFAULT_PORT;
 
-        Ports ports = options.count("port")
+        Ports ports = options.contains("port")
             ? options["port"].as<Ports>()
             : Ports({default_port});
 
-        Strings hosts = options.count("host") ? options["host"].as<Strings>() : Strings({"localhost"});
+        Strings hosts = options.contains("host") ? options["host"].as<Strings>() : Strings({"localhost"});
 
         String proto_send_chunked {"notchunked"};
         String proto_recv_chunked {"notchunked"};
 
-        if (options.count("proto_caps"))
+        if (options.contains("proto_caps"))
         {
             std::string proto_caps_str = options["proto_caps"].as<std::string>();
 
@@ -731,9 +731,9 @@ int mainEntryClickHouseBenchmark(int argc, char ** argv)
             options["delay"].as<double>(),
             std::move(hosts),
             std::move(ports),
-            options.count("roundrobin"),
-            options.count("cumulative"),
-            options.count("secure"),
+            options.contains("roundrobin"),
+            options.contains("cumulative"),
+            options.contains("secure"),
             options["database"].as<std::string>(),
             options["user"].as<std::string>(),
             options["password"].as<std::string>(),
@@ -741,7 +741,7 @@ int mainEntryClickHouseBenchmark(int argc, char ** argv)
             proto_recv_chunked,
             options["quota_key"].as<std::string>(),
             options["stage"].as<std::string>(),
-            options.count("randomize"),
+            options.contains("randomize"),
             options["iterations"].as<size_t>(),
             options["timelimit"].as<double>(),
             options["confidence"].as<size_t>(),
@@ -749,9 +749,9 @@ int mainEntryClickHouseBenchmark(int argc, char ** argv)
             options["query_id_prefix"].as<std::string>(),
             options["query"].as<std::string>(),
             options["max-consecutive-errors"].as<size_t>(),
-            options.count("ignore-error"),
+            options.contains("ignore-error"),
             options["reconnect"].as<size_t>(),
-            options.count("client-side-time"),
+            options.contains("client-side-time"),
             print_stacktrace,
             settings);
         return benchmark.run();
