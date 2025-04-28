@@ -220,7 +220,7 @@ void Block::insertUnique(ColumnWithTypeAndName elem)
     if (elem.name.empty())
         throw Exception(ErrorCodes::AMBIGUOUS_COLUMN_NAME, "Column name in Block cannot be empty");
 
-    if (!index_by_name.contains())
+    if (!index_by_name.contains(elem.name))
         insert(std::move(elem));
 }
 
