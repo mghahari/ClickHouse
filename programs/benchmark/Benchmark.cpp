@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <csignal>
 #include <iostream>
-#include <iomanip>
 #include <mutex>
 #include <optional>
 #include <random>
@@ -36,7 +35,6 @@
 #include <Common/TerminalSize.h>
 #include <Common/StudentTTest.h>
 #include <Common/CurrentMetrics.h>
-#include <Common/ErrorCodes.h>
 #include "IO/WriteBuffer.h"
 
 
@@ -471,7 +469,7 @@ private:
         }
     }
 
-    void execute(Query & query, size_t connection_index)
+    void execute(const Query & query, size_t connection_index)
     {
         Stopwatch watch;
 
@@ -516,7 +514,7 @@ private:
         t_test.add(info_index, duration);
     }
 
-    void report(MultiStats & infos, double seconds)
+    void report(const MultiStats & infos, double seconds)
     {
         std::lock_guard lock(mutex);
 
@@ -579,7 +577,7 @@ private:
 
         if (!cumulative)
         {
-            for (auto & info : infos)
+            for (const auto & info : infos)
                 info->clear();
         }
 
